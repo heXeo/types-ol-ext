@@ -10,8 +10,8 @@ export interface Options extends ControlOptions {
     source?: VectorSource;
     interval?: number;
     maxWidth?: string;
-    minDate?: string;
-    maxDate?: string;
+    minDate?: Date;
+    maxDate?: Date;
     minZoom?: number;
     maxZoom?: number;
     zoomButton?: boolean;
@@ -34,8 +34,8 @@ export interface Options extends ControlOptions {
  *	@param {SourceImageOptions.vector} options.source class of the control
  *	@param {Number} options.interval time interval length in ms or a text with a format d, h, mn, s (31 days = '31d'), default none
  *	@param {String} options.maxWidth width of the time line in px, default 2000px
- *	@param {String} options.minDate minimum date
- *	@param {String} options.maxDate maximum date
+ *	@param {Date} options.minDate minimum date
+ *	@param {Date} options.maxDate maximum date
  *	@param {Number} options.minZoom Minimum zoom for the line, default .2
  *	@param {Number} options.maxZoom Maximum zoom for the line, default 4
  *	@param {boolean} options.zoomButton Are zoom buttons avaliable, default false
@@ -64,7 +64,7 @@ export default class Timeline extends ol_control_Control {
         className?: string;
         title?: string;
         html: Element | string;
-        click: (e: Event) => void;
+        handleClick: (e: Event) => void;
     }): void;
     /** Set an interval
      * @param {number|string} length the interval length in ms or a farmatted text ie. end with y, 1d, h, mn, s (31 days = '31d'), default none
